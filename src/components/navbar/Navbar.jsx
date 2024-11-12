@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./navbar.module.css";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import ThemeToggle from "../themeToggle/ThemeToggle";
 import AuthLinks from "../authLinks/AuthLinks";
 function Navbar() {
