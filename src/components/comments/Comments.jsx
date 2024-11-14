@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import styles from "./comments.module.css";
 import { Link } from "next-view-transitions";
@@ -7,20 +7,21 @@ import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import Error from "next/error";
 
-const fetcher= async (url)=>{
-  const res = await fetch(url)
-  const data= await res.json()
+const fetcher = async (url) => {
+  const res = await fetch(url);
+  const data = await res.json();
   if (!res.ok) {
-    const error = new Error(data.message)
+    const error = new Error(data.message);
     throw error;
   }
-  return data
-}
+  return data;
+};
 function Comments({ postSlug }) {
   //only for users logged in
-  const status = useSession();
+  const { status } = useSession();
   const { data, isLoading } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${postSlug}`,fetcher
+    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    fetcher
   );
   return (
     <div className={styles.container}>
@@ -38,11 +39,9 @@ function Comments({ postSlug }) {
       )}
       {/*Comment list*/}
       <div className={styles.comments}>
-       { isLoading? "loading": data?.map((item)=>(
-
-         <Comment key={item._id} item={item}/>
-       ))}
-     
+        {isLoading
+          ? "loading"
+          : data?.map((item) => <Comment key={item._id} item={item} />)}
       </div>
     </div>
   );

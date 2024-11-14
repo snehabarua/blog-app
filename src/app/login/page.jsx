@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styles from "./login.module.css";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";

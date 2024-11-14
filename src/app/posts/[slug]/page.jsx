@@ -54,7 +54,7 @@ async function SinglePage({ params }) {
           />
 
           <div className={styles.comment}>
-            <Comments slug={slug}/>
+            <Comments postSlug={slug}/>
           </div>
         </div>
         <Menu />
