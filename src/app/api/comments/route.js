@@ -1,5 +1,6 @@
 import prisma from "@/utils/connect";
 import { NextResponse } from "next/server";
+import { getAuthSession } from "@/utils/auth";
 //get all comments of a post using post id of that post
 export const GET = async (req) => {
   //The front-end sends a request to your API,eg- GET /api/comments?postSlug=how-to-learn-javascript
@@ -28,7 +29,7 @@ export const GET = async (req) => {
 
 //create a comment
 export const POST = async (req) => {
-  const session = getAuthSession();
+  const session =await getAuthSession();
   if (!session) {
     return new NextResponse(
       JSON.stringify({ message: "Not authenticated" }, { status: 401 })

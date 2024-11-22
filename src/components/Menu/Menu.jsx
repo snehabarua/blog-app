@@ -2,12 +2,12 @@ import React from "react";
 import styles from "./menu.module.css";
 import MenuPosts from "../menuPosts/MenuPosts";
 import MenuCategories from "../menuCategories/MenuCategories";
-function Menu() {
+function Menu({currentCategory}) {
   return (
     <div className={styles.container}>
       <h2 className={styles.subtitle}>{"What's Hot"}</h2>
       <h1 className={styles.title}>Most Popular</h1>
-      <MenuPosts withImage={false}/>
+      <MenuPosts withImage={false} />
       <h2 className={styles.subtitle}>Discover by topic</h2>
       <h1 className={styles.title}>Categories</h1>
     <MenuCategories/>
