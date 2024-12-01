@@ -13,13 +13,10 @@ function Featured() {
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.postTitle}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit,
-            facere?
+           Want to share your story? Write a blog & let everyone get inspired!
           </h1>
           <p className={styles.postDesc}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-            delectus fuga optio ipsa consequuntur inventore voluptas
-            exercitationem perspiciatis tempore voluptate?
+           This platform is built to share your unique stories with the world. Let it be a blog,  a video, or a photo,{` it's`} your choice. Let it flow here!! 
           </p>
           <button className={styles.button}>Read More</button>
         </div>

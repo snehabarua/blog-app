@@ -3,9 +3,9 @@ import React from "react";
 import styles from "./comment.module.css";
 import Image from "next/image";
 
-function Comment({ key, item }) {
+function Comment({  item }) {
   return (
-    <div className={styles.comment}>
+    <div className={styles.comment} >
       <div className={styles.user}>
         {item?.user?.image && (
           <Image

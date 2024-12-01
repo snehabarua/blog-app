@@ -2,18 +2,19 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./write.module.css";
-import "react-quill/dist/quill.bubble.css";
+import "react-quill-new/dist/quill.bubble.css";
 import { supabase } from "@/utils/supabase";
 import { useRouter } from "next/navigation";
-import ReactQuill from "react-quill";
+import ReactQuill from "react-quill-new";
 import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 function Write() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(" ");
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
   const [title, setTitle] = useState("");
-  const [catSlug, setCatSlug]=useState("")
+  const [catSlug, setCatSlug] = useState("");
   const { status } = useSession();
   const router = useRouter();
 
@@ -31,8 +32,8 @@ function Write() {
         const { data: url, error } = await supabase.storage
           .from("BlogImages")
           .getPublicUrl("public/" + name);
-        console.log(url);
-        alert("file uploaded succesfully");
+        // console.log(url);
+        toast.success("file uploaded successfully");
         setMedia(url.publicUrl);
       }
     }
@@ -40,8 +41,7 @@ function Write() {
     file && uploadFile(file);
     //The useEffect watches the file state.
     //When file changes (i.e., when a user selects a file), uploadFile(file) is executed to handle the upload process.
-  //The file in the dependency array doesn’t execute any code but acts as a trigger for when the useEffect should run. It ensures that file && uploadFile(file) executes only after file changes
-
+    //The file in the dependency array doesn’t execute any code but acts as a trigger for when the useEffect should run. It ensures that file && uploadFile(file) executes only after file changes
   }, [file]);
   if (status === "loading") {
     return <div className={styles.loading}>Loading...</div>;
@@ -64,15 +64,15 @@ function Write() {
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug:catSlug || "style" //if nothing selected choose general category
+        catSlug: catSlug || "style", //if nothing selected choose general category
       }),
     });
     console.log(res);
-    //check if res is 200 or not and then redirect to post page with slug 
-    // if(res.status==200){
-    //   const data = res.json()
-    //   router.push(`/posts/${data.slug}`)
-    // }
+    // check if res is 200 or not and then redirect to post page with slug
+    if (res.status === 200) {
+      const data = await res.json();
+      router.push(`/posts/${data.slug}`);
+    }
   };
   return (
     <div className={styles.container}>
@@ -82,8 +82,11 @@ function Write() {
         className={styles.input}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <select className={styles.select} onChange={(e)=>setCatSlug(e.target.value)}>
-      <option value="style">style</option>
+      <select
+        className={styles.select}
+        onChange={(e) => setCatSlug(e.target.value)}
+      >
+        <option value="style">style</option>
         <option value="fashion">fashion</option>
         <option value="food">food</option>
         <option value="culture">culture</option>

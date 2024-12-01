@@ -1,0 +1,55 @@
+.container {
+    padding: 20px;
+  }
+  
+  .bookmarkList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .bookmarkItem {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .bookmarkItem h2 {
+    margin: 0;
+  }
+  
+  .bookmarkItem p {
+    color: #555;
+  }
+  .textContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .additional {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .date {
+    color: grey;
+  }
+ 
+  .desc {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--softTextColor);
+  }
+  .link {
+    border-bottom: 1px solid crimson;
+    width: max-content;
+    padding: 2px 0;
+  }
+  
+  @media screen and (max-width: 1280px) {
+    .imgContainer {
+      display: none;
+    }
+  }
+    

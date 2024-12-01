@@ -48,6 +48,7 @@ model User {
   sessions      Session[]
   Post          Post[]
   Comment       Comment[]
+   Bookmark      Bookmark[]
 }
 
 model VerificationToken {
@@ -79,7 +80,19 @@ model Post {
   userEmail String
   user      User      @relation(fields: [userEmail], references: [email])
   comments  Comment[]
+   Bookmark      Bookmark[]
 }
+model Bookmark {
+  id        String   @id @default(cuid()) @map("_id")
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, postId]) // Ensures a user cannot bookmark the same post multiple times
+}
+
 
 model Comment {
   id        String   @id @default(cuid()) @map("_id")

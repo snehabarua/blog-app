@@ -28,7 +28,7 @@ async function CardList({ page, cat }) {
       <h1 className={styles.title}>Recent Posts</h1>
       <div className={styles.posts}>
         {posts?.map((item) => (
-          <Card item={item} key={item._id} />
+          <Card item={item} key={item.id} />
         ))}
       </div>
 
