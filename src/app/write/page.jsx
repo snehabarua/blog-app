@@ -72,7 +72,7 @@ function Write() {
     // check if res is 200 or not and then redirect to post page with slug
     if (res.status === 200) {
       const data = await res.json();
-      router.push(`/posts/${data.slug}`);
+      router.push("/");
     }
   };
   return (
