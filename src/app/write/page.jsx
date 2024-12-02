@@ -59,7 +59,7 @@ function Write() {
       .replace(/[\s_-]+/g, "-")
       .replace(/^-+|-+$/g, "");
   const handleSubmit = async () => {
-    const res = await fetch("/api/posts", {
+    const res = await fetch("https://blog-app-nine-iota.vercel.app/api/posts", {
       method: "POST",
       body: JSON.stringify({
         title,
