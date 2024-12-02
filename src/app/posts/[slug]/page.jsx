@@ -18,7 +18,14 @@ const getData = async (slug) => {
 };
 async function SinglePage({ params }) {
   const { slug } = params;
-  const data = await getData(slug);
+  try {
+    const data = await getData(slug);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+    return <div>Error loading post. Please try again later.</div>;
+  }
+  
   //page made for single post
   //when user searches for a topic, it will be shown here
 
@@ -33,7 +40,7 @@ async function SinglePage({ params }) {
             </div>}
 
             <div className={styles.userTextContainer}>
-              <span className={styles.username}>{data?.user.name}</span>
+              <span className={styles.username}>{data?.user.name || "Anonymous"}</span>
               <span className={styles.date}>
                 {data?.createdAt.substring(0, 10)}
               </span>
