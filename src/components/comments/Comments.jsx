@@ -20,7 +20,7 @@ function Comments({ postSlug }) {
   //only for users logged in
   const { status } = useSession();
   const { data, mutate, isLoading } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    `https://blog-app-nine-iota.vercel.app//api/comments?postSlug=${postSlug}`,
     fetcher
   );
   const [desc, setDesc] = useState("");

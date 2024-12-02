@@ -7,7 +7,7 @@ const getData = async (page, cat) => {
   // It sends a GET request to the API endpoint with a query parameter page (e.g., /api/posts?page=1).
   // The option cache: "no-store" ensures that the fetch request bypasses any caching mechanisms, meaning it will always fetch fresh data.
   const res = await fetch(
-    `http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`,
+    `https://blog-app-nine-iota.vercel.app//api/posts?page=${page}&cat=${cat || ""}`,
     {
       cache: "no-store",
     }
