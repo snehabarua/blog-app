@@ -5,9 +5,11 @@ import styles from "./write.module.css";
 import "react-quill-new/dist/quill.bubble.css";
 import { supabase } from "@/utils/supabase";
 import { useRouter } from "next/navigation";
-import ReactQuill from "react-quill-new";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
+
 function Write() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(" ");
@@ -118,13 +120,15 @@ function Write() {
             </button>
           </div>
         )}
-        <ReactQuill
-          theme="bubble"
-          className={styles.textArea}
-          value={value}
-          onChange={setValue}
-          placeholder="Tell your story..."
-        />
+  
+          <ReactQuill
+            theme="bubble"
+            className={styles.textArea}
+            value={value}
+            onChange={setValue}
+            placeholder="Tell your story..."
+          />
+       
       </div>
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
