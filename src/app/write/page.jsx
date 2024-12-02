@@ -69,11 +69,11 @@ function Write() {
         catSlug: catSlug || "style", //if nothing selected choose general category
       }),
     });
-    // check if res is 200 or not and then redirect to post page with slug
-    if (res.status === 200) {
-      const data = await res.json();
-      router.push("/");
-    }
+    // // check if res is 200 or not and then redirect to post page with slug
+    // if (res.status === 200) {
+    //   const data = await res.json();
+    //   router.push("/");
+    // }
   };
   return (
     <div className={styles.container}>
